@@ -3,26 +3,18 @@ import 'semantic-ui-css/semantic.min.css';
 import NavBar from './NavBar';
 import PaintingsList from './PaintingsList';
 import PaintingForm from './PaintingForm'
+import paintings from './painting_data'
 
 
 class App extends React.Component{
 
   constructor(){
-    console.log("APP: Constructor")
     super()
     this.state = {
       color: "red",
-      paintings: [],
+      paintings: paintings,
       formView: false
     }
-  }
-
-  componentDidMount(){
-    console.log("APP: ComponentDidMount")
-
-    fetch("http://localhost:3000/paintings")
-    .then(res => res.json())
-    .then(paintings => this.setState({ paintings })) //explain paintings is same as paintings: paintings
   }
 
   changeColor = () => {
@@ -36,7 +28,6 @@ class App extends React.Component{
   }
 
   addPainting = (info) => {
-    // console.log(info)
 
     const newPainting = {
       // id: this.state.paintings[this.state.paintings.length-1].id + 1, //BONUS to get rid of warning
@@ -62,7 +53,6 @@ class App extends React.Component{
   }
 
   render(){
-  console.log("APP: Render")
   
   return (
     <div>
